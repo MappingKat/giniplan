@@ -1,0 +1,523 @@
+<!DOCTYPE html="" PUBLIC="" -//W3C//DTD XHTML 1.0 Transitional//EN"="" http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"=""/>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gini Plan</title>
+  <meta name="description" content="Get Out of Debt Fast, Track Your Expenses, Month by Month Plan, Minimize Interest, Experience Financial Freedom, Secure And Anonymous" />
+   <meta name="keywords" content="Debt,Loan,Mortgage,Finance,Money,Credit Card,Credit,Expense,Plan,Planner,Track,Tracking,Budget,Analysis,Retire,Freedom,Investments,Stocks,104k,Roth IRA,IRA,HELOC" />
+  <link rel="stylesheet" href="http://giniplan.com/Style/stylegini.css"/>
+  <!-- <link rel="stylesheet" href="http://giniplan.com/Style/masoro.css" /> -->
+  <style>
+  @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+  html {
+    height: 100%;
+    font-family: 'Lato', sans-serif;
+  }
+  body {
+    height: 100%;
+    margin: 0;
+    background: linear-gradient(135deg, rgba(65,131,155,1) 0%,rgba(51,98,123,1) 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  #container {
+    display: table;
+    width: 1200px;
+    background: #202b33;
+    margin: 60px auto;
+    border-radius: 4px;
+  }
+
+  /* Side Bar */
+  #sideMenu {
+    width: 240px;
+    height: 100%;
+    padding: 30px;
+    border-right: 1px solid #111;
+    display: table-cell;
+    vertical-align: top;
+    color: #fff;
+  }
+  .menu {
+    list-style: none;
+    margin:  24px 0;
+    padding: 0;
+  }
+  .menu li {
+    display: block;
+    height: 30px;
+    width: 100%;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: 200;
+    color: rgba(255, 255, 255, .6);
+    position: relative;
+  }
+  .menu li:hover {
+    color: #239ae3;
+  }
+  .menu li:first-child {
+    height: 35px;
+    line-height: 35px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+  }
+  .addCategory {
+    font-size: 13px;
+    font-weight: 200;
+    color: rgba(255, 255, 255, .2);
+  }
+  .addCategory:hover {
+    color: #fff;
+  }
+
+  /* Content */
+  #content {
+    width: calc(100% - 240px);
+    height: 100%;
+    padding: 25px;
+    display: table-cell;
+  }
+  #titleBar {
+    height: 36px;
+    margin-bottom: 30px;
+  }
+  #profilePic {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #999;
+    float: right;
+    margin-top: -8px;
+    margin-left: 14px;
+    overflow: hidden;
+  }
+  #profilePic img {
+    width: 100%;
+  }
+  .controls {
+    display: block;
+    width: 70px;
+    height: 20px;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 10px;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 20px;
+    float: right;
+    border-radius: 20px;
+  }
+  .activeControl {
+    background: rgba(255, 255, 255, 0.9);
+    color: #202b33;
+    font-weight: 600;
+  }
+  #salesData {
+    margin-bottom: 60px;
+  }
+  #totalSales {
+    height: 120px;
+    position: relative;
+    margin-top: 24px;
+    margin-bottom: 50px;
+  }
+  #totalSales .col {
+    float: left;
+    width: 33.33%;
+    height: 100%;
+  }
+  #totalSales .col .progressTitle {
+    float: left;
+    margin-left: 20px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.4);
+  }
+  .progressBar {
+    float: left;
+    height: 120px;
+    width: 120px;
+    font-size: 40px;
+    text-align: center;
+    line-height: 120px;
+  }
+
+  /* Icons */
+  .notification {
+    display: block;
+    width: 20px;
+    height: 20px;
+    color: #202b33;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .6);
+    position: absolute;
+    top: 0; bottom: 0; right: 2%;
+    margin: auto;
+  }
+  .colorIcon {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0; bottom: 0; right: 2%;
+    margin: auto;
+  }
+  .plus {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    color: #202b33;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 8px;
+    padding: 4px;
+    margin-right: 6px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 50%;
+    color: rgba(255, 255, 255, .2);
+  }
+  .red {
+    background: #ec1561;
+  }
+  .orange {
+    background: #ff9939;
+  }
+  .green {
+    background: #2bab51;
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th {
+    text-align: left;
+    color: #fff;
+    font-weight: 400;
+    font-size: 13px;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0 10px;
+    padding-bottom: 14px;
+  }
+  tr:not(:first-child):hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  td {
+    height: 40px;
+    line-height: 40px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.4);
+    padding: 0 10px;
+  }
+  /* Headers */
+  h1 {
+    font-size: 13px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  h2 {
+    float: left;
+    font-size: 19px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    margin: 0;
+    color: rgba(255, 255, 255, .8);
+  }
+  h3 {
+    float: left;
+    color: #fff;
+    font-size: 32px;
+    font-weight: 300;
+    margin: 0;
+    margin-top: 8%;
+    margin-left: 20px;
+    margin-bottom: 6px;
+  }
+
+  .clearFix {
+    clear: both;
+  }
+</style>
+<!--   <link rel="stylesheet" type="css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material-fullpalette.min.css">
+  <link rel="stylesheet" type="css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" type="css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material.min.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/roboto.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material-fullpalette.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/ripples.min.css">
+</head>
+<body>
+  <script type="text/javascript">
+    WebFontConfig = {
+      google: { families: ['Abel::latin', 'Lato:700:latin', 'Montserrat::latin'] }
+    };
+    (function () {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+    })(); 
+    WebFontConfig = {
+        google: { families: ['Abel::latin', 'Lato:700:latin', 'Montserrat::latin'] }
+    };
+    (function () {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+    })(); 
+  </script>
+  <form method="post" action="Home.aspx" id="aspnetForm">
+
+<script type="text/javascript">
+//<![CDATA[
+  var theForm = document.forms['aspnetForm'];
+  if (!theForm) {
+    theForm = document.aspnetForm;
+  }
+  function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+      theForm.__EVENTTARGET.value = eventTarget;
+      theForm.__EVENTARGUMENT.value = eventArgument;
+      theForm.submit();
+    }
+  }
+//]]>
+</script>
+<script src="http://giniplan.com/WebResource.axd?d=kw9lQSUm8z-Dmre-7r2RJZqwOf0Ik0IQFFhWdvoHDD6iqmVjybh08SAZbpYRXh8RyEdXybRL2s4z3n5M5MVr27TKJFQ1&amp;t=635787961906277529" type="text/javascript"></script>
+<script src="http://giniplan.com/WebResource.axd?d=uE1CaRb53vVvCsEAC17_o70VarQdGgWBNUD0hvOmaPUKfZibtfPALkHK8o2TvlC8MAQsjaTPjA-lY-9jKHh0c_nnBGWk41wdRYXU-PYEfJ-J9mLr6fvvrraMx6ht5FjVglvemw2&amp;t=635701458433372390" type="text/javascript"></script>
+<script src="http://giniplan.com/WebResource.axd?d=9mXFPWGqok50fK3nhKWgkSoDpw9n3Wejbjl2fJ__Ra-zhWo9VxYFOvEOYqLzbgp4JJSFmI-kYWnQP5OnuO09OwDfH1L8Iivj9sDqeNVvvRnR1TnkLLlSU1Cx1bVUpLGx6etDzg2&amp;t=635701458433372390" type="text/javascript"></script><style>.gridTableDefault{border-collapse:collapse;}.gridTableDefault td{border:solid 1px lightgray;white-space:nowrap;overflow:hidden;}.gridTableDefault th{border:solid 1px lightgray;white-space:nowrap;overflow:hidden;}</style>
+<script src="http://giniplan.com/WebResource.axd?d=0_9Hl1WGyYK7rSkZBRw9StREOIPqZVJFuvQQ5w5jnPhclG2rrrZ0HT8JYPQEIYoXZvqU_sLhFD15HexMmx-fvnXrXNj4Cp11g-nYGKlQwwCTBFai7hgox4pTCm-nfEPNg7O6mQ2&amp;t=635701458433372390" type="text/javascript"></script>
+<script src="http://giniplan.com/WebResource.axd?d=tlGLFUMTTINFdq79lvsf3E-P_LokDAYM0F4qU22EcndpxBLfDlR7muC7rnLpCQPdqhEZVLqYd-rEI7wimkSIF-i2f8qhZCRA790TPPQECY_cDbS5glXuqtQ5G2-7WejiPfXnJg2&amp;t=635701458433372390" type="text/javascript"></script>
+<script src="http://giniplan.com/WebResource.axd?d=YvtrgL5HkdXnZx8CJo5VJiN-_iXshJS0xaW7yha8iyZkjZ18QzA_DzvKtF74Trv88omDYRN3-u5cLqJidWS2sXvEW3chLCimq9ABoJ06ZZwV2CxaDHj03Z7ZVnWJivM3vn6QaQ2&amp;t=635701458433372390" type="text/javascript"></script>
+<script src="http://giniplan.com/WebResource.axd?d=anpb86JKY4so4bCeXUi3tgNABnDKV8f9USOLzeSku_REEZugc1bEgrXsym-p9je3GA1FkznxouClV-P7kED49JQoS40sT7xci6NIZ1WQ38KGuEr60&amp;t=635701458433372390" type="text/javascript"></script>
+<script src="http://giniplan.com//ScriptResource.axd?d=DhFO2cy4SKrCa-e0ySwBYfY2UzbIrA7y0K0nbPznHBnqTXH_AV3pIav9SED9e1DM5aAYBAYQxZrICiips9GO2Vez_btu3urUcRFor_sCKkbagV75QcpNaoVJvbcz89ot9z_FFr9haB8fRMzvDU99ZZ71MLKPe1Ft0BA4QMIhSR64Wb9I0&amp;t=ffffffff88e65ea0" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+</script>
+<script src="http://giniplan.com//ScriptResource.axd?d=BtRW5nbVOVKoVKQztm4WLfpWkogFncw3rdonyBGhuEpO2w5bovmAnpXLdVeLliWvB0pqCYXw4WJ1C0Rfjgj_AklZSreY0togQI76_xTaY9q6KFz-ijthTi6sB0LENExrD9NZl_k7RqN2yW2vq29qBpCMKAiYWCjVaihGJUK_huUXGQvv0&amp;t=ffffffff88e65ea0" type="text/javascript"></script>
+<script src="http://giniplan.com/WebResource.axd?d=syxJXFjoAiRRYkqZqA4-h7ITDHwtkMj4zhlIbOiz3IggiP3z_ip3foF0lLhBBjP59bAE86VePY6tf-7oeAPqa_r_oLZvLzH_gXroDwFH08QkHdeGpBOggnJItXSj5EAHOD1gvA2&amp;t=635701458433372390" type="text/javascript"></script>
+<div class="aspNetHidden">
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="8D0E13E6" />
+</div>
+<script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ctl00$sm', 'aspnetForm', ['tctl00$ctl00$cb$ctl00','','tctl00$ctl00$popupMessage$up','','tctl00$ctl00$popupError$up','','tctl00$ctl00$popupLoading$up',''], [], [], 90, 'ctl00$ctl00');
+//]]>
+</script>
+
+  <div class="navbar navbar-default" id="navbar">
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <a href="\">
+      <img src="http://giniplan.com/Style/Images/logo-header.png" alt="Gini Plan"/>
+      <span>"Plan for the future"</span>
+    </a>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="http://giniplan.com/Default.aspx">Overview</a></li>
+        <li><a href="http://giniplan.com/PlanResult.aspx">Financial Plan</a></li>
+        <li><a href="http://giniplan.com/AccountEdit.aspx">My Info</a></li>
+        <li><a href="http://giniplan.com/GetHelp.aspx">Get Help</a></li>
+        <li><a href="http://giniplan.com/Logout.aspx">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+  </header>
+  <main class="content">
+    <div class="content">
+    <div id="ctl00_ctl00_cb_ctl00">
+      <div class="divHome">
+         <div class="divVideoLink"><a onclick="window.open('VideoPopup.aspx?v=2RQ8Bj30h-U','videopopup','width=700,height=500');" href="http://giniplan.com/javascript:">Help, Show Me A Video!</a></div>
+        <h2>Overview - October 2015</h2>
+        <table class="tableFrame">
+          <tr><td class="divGoals">
+        <h3>Goals</h3>        
+        <div style="text-align:center;">
+            <div id="ctl00_ctl00_cb_cb_progressBarGoals_ctl00" style="display:inline-block;overflow:hidden;width325px;"><table style="padding:0;margin:0;border-collapse;collapse;width:100%;"><tr><td style="padding:0;margin:0;text-align:left;">Tuition</td><td style="padding:0;margin:0;text-align:right;">$5,000 / $50,000</td></tr></table><div style="display:inline-block;overflow:hidden;height:25px;width:325px;"><img style="height:25px;" src="http://giniplan.com/WebResource.axd?d=VIf7RTn-fQ6MWzBRt-QUxfRpo1102kIKcCzm1d5t5LRaS4Ogtpq6mf-ctw-yipeh78wOJH8bwaKREQCcw_RgPcM1T871GFC7ADdHIq0XfyAA4PHyGNc3gKqt2yKadnDRbl2uuOUaPANUGT_KQBsqzdyC8S41&t=635701458433372390" /><img style="width:16px;height:25px;" src="http://giniplan.com/WebResource.axd?d=dWFq75o-i1WnqPB8AWoonUrTtxOd-oB9euva22MNT28TtZ2FlB3vA9MSNEdwE6tV5SuCTb83JFmvNowZCp9BDTnm_O4wT1cjPE0B3rdR9TX9sZgzuaOPku9iUdtq0_C0GQvyfUdmVmARzExliAEyJJz6CMQ1&t=635701458433372390" /><img style="width:16px;height:25px;" src="http://giniplan.com/WebResource.axd?d=BtYLYUqZ5FTdjAb9GBcq0Z4V1AxUbUHVRDO7XbSrQgxC_5BqiB9tLIFq1J52IaDiO0qSVFhvWTaUy16HIfnVj4rEdCCEh0HIH3OEHYvWiWgF6-J41mBh5x3VCBFYFjEcGwHcuCi4k1widuFqnJClSJfgwaU1&t=635701458433372390" /><img style="width:291px;height:25px;" src="http://giniplan.com/WebResource.axd?d=rzoELblziKc0T86ZhCUsaO5rdIvBrqYMt6Jp951opWoctfYEIJrTltA0Wqig1BjjmHfl8Z_m7_ThS7jlyqxS4p6cqqTTp5RgI0cU3yztWwcSsawliknEkYkeE9TrMRrud3ywUMxSnVyOLgQN3-rAc2pDqPQ1&t=635701458433372390" /><img style="height:25px;" src="http://giniplan.com/WebResource.axd?d=Gi5957MnPOZ0qmgCHQUJtl78HCGRE2QEjbW8thZNE-H-s8xmzH0FCZRKJwejkCX_RkkX9oXYrQw03wGao38nrj8b-1Kw1TDveCz8JPa07_NxtL5OXnWgmGvtzstl0Br_pT7as42GHifky_3AjNoe3_ceS2E1&t=635701458433372390" /></div><div></div></div><br /><br /><div id="ctl00_ctl00_cb_cb_progressBarGoals_ctl02" style="display:inline-block;overflow:hidden;width325px;"><table style="padding:0;margin:0;border-collapse;collapse;width:100%;"><tr><td style="padding:0;margin:0;text-align:left;">Mortgage</td><td style="padding:0;margin:0;text-align:right;">$0 / $125,000</td></tr></table><div style="display:inline-block;overflow:hidden;height:25px;width:325px;"><img style="height:25px;" src="http://giniplan.com/WebResource.axd?d=VIf7RTn-fQ6MWzBRt-QUxfRpo1102kIKcCzm1d5t5LRaS4Ogtpq6mf-ctw-yipeh78wOJH8bwaKREQCcw_RgPcM1T871GFC7ADdHIq0XfyAA4PHyGNc3gKqt2yKadnDRbl2uuOUaPANUGT_KQBsqzdyC8S41&t=635701458433372390" /><img style="width:0px;height:25px;" src="http://giniplan.com/WebResource.axd?d=dWFq75o-i1WnqPB8AWoonUrTtxOd-oB9euva22MNT28TtZ2FlB3vA9MSNEdwE6tV5SuCTb83JFmvNowZCp9BDTnm_O4wT1cjPE0B3rdR9TX9sZgzuaOPku9iUdtq0_C0GQvyfUdmVmARzExliAEyJJz6CMQ1&t=635701458433372390" /><img style="width:0px;height:25px;" src="http://giniplan.com/WebResource.axd?d=BtYLYUqZ5FTdjAb9GBcq0Z4V1AxUbUHVRDO7XbSrQgxC_5BqiB9tLIFq1J52IaDiO0qSVFhvWTaUy16HIfnVj4rEdCCEh0HIH3OEHYvWiWgF6-J41mBh5x3VCBFYFjEcGwHcuCi4k1widuFqnJClSJfgwaU1&t=635701458433372390" /><img style="width:323px;height:25px;" src="http://giniplan.com/WebResource.axd?d=rzoELblziKc0T86ZhCUsaO5rdIvBrqYMt6Jp951opWoctfYEIJrTltA0Wqig1BjjmHfl8Z_m7_ThS7jlyqxS4p6cqqTTp5RgI0cU3yztWwcSsawliknEkYkeE9TrMRrud3ywUMxSnVyOLgQN3-rAc2pDqPQ1&t=635701458433372390" /><img style="height:25px;" src="http://giniplan.com/WebResource.axd?d=Gi5957MnPOZ0qmgCHQUJtl78HCGRE2QEjbW8thZNE-H-s8xmzH0FCZRKJwejkCX_RkkX9oXYrQw03wGao38nrj8b-1Kw1TDveCz8JPa07_NxtL5OXnWgmGvtzstl0Br_pT7as42GHifky_3AjNoe3_ceS2E1&t=635701458433372390" /></div><div></div></div><br /><br /><div id="ctl00_ctl00_cb_cb_progressBarGoals_ctl04" style="display:inline-block;overflow:hidden;width325px;"><table style="padding:0;margin:0;border-collapse;collapse;width:100%;"><tr><td style="padding:0;margin:0;text-align:left;">MasterCard</td><td style="padding:0;margin:0;text-align:right;">$0 / $2,500</td></tr></table><div style="display:inline-block;overflow:hidden;height:25px;width:325px;"><img style="height:25px;" src="http://giniplan.com/WebResource.axd?d=VIf7RTn-fQ6MWzBRt-QUxfRpo1102kIKcCzm1d5t5LRaS4Ogtpq6mf-ctw-yipeh78wOJH8bwaKREQCcw_RgPcM1T871GFC7ADdHIq0XfyAA4PHyGNc3gKqt2yKadnDRbl2uuOUaPANUGT_KQBsqzdyC8S41&t=635701458433372390" /><img style="width:0px;height:25px;" src="http://giniplan.com/WebResource.axd?d=dWFq75o-i1WnqPB8AWoonUrTtxOd-oB9euva22MNT28TtZ2FlB3vA9MSNEdwE6tV5SuCTb83JFmvNowZCp9BDTnm_O4wT1cjPE0B3rdR9TX9sZgzuaOPku9iUdtq0_C0GQvyfUdmVmARzExliAEyJJz6CMQ1&t=635701458433372390" /><img style="width:0px;height:25px;" src="http://giniplan.com/WebResource.axd?d=BtYLYUqZ5FTdjAb9GBcq0Z4V1AxUbUHVRDO7XbSrQgxC_5BqiB9tLIFq1J52IaDiO0qSVFhvWTaUy16HIfnVj4rEdCCEh0HIH3OEHYvWiWgF6-J41mBh5x3VCBFYFjEcGwHcuCi4k1widuFqnJClSJfgwaU1&t=635701458433372390" /><img style="width:323px;height:25px;" src="http://giniplan.com/WebResource.axd?d=rzoELblziKc0T86ZhCUsaO5rdIvBrqYMt6Jp951opWoctfYEIJrTltA0Wqig1BjjmHfl8Z_m7_ThS7jlyqxS4p6cqqTTp5RgI0cU3yztWwcSsawliknEkYkeE9TrMRrud3ywUMxSnVyOLgQN3-rAc2pDqPQ1&t=635701458433372390" /><img style="height:25px;" src="http://giniplan.com/WebResource.axd?d=Gi5957MnPOZ0qmgCHQUJtl78HCGRE2QEjbW8thZNE-H-s8xmzH0FCZRKJwejkCX_RkkX9oXYrQw03wGao38nrj8b-1Kw1TDveCz8JPa07_NxtL5OXnWgmGvtzstl0Br_pT7as42GHifky_3AjNoe3_ceS2E1&t=635701458433372390" /></div><div></div></div><br /><br />
+        </div>
+    
+                        
+            </td><td class="divBalance">
+                
+
+<h3>Balances</h3>
+
+        <table gridtable="1" id="ctl00_ctl00_cb_cb_fundListBalance_gtFund" name="ctl00$ctl00$cb$cb$fundListBalance$gtFund" class="tableGrid"><th>Account</th><th>Balance</th><tr><td>Bank Checking (Cash)</td><td><span class='lblGreenText'>$2,000</span></td></tr><tr><td>Bank Savings</td><td><span class='lblGreenText'>$5,000</span></td></tr><tr><td>Roth IRA</td><td><span class='lblGreenText'>$8,000</span></td></tr><tr><td>Mortgage</td><td><span class='lblRedText'>-$125,000</span></td></tr><tr><td>MasterCard</td><td><span class='lblRedText'>-$2,500</span></td></tr></table><input id="ctl00_ctl00_cb_cb_fundListBalance_gtFund_misc" name="ctl00_ctl00_cb_cb_fundListBalance_gtFund_misc" type="hidden" value="" />
+    
+
+            </td></tr>
+            <tr><td class="divPayments">
+                <h3>This Month's Plan</h3>
+                <table><tr><td class="tdHead">Income This Month</td></tr><tr><td><table class="tableSub"><tr><td class="tdNamePlain">Salary 1:</td><td style="white-space:nowrap;" class="tdValuePlain">$1,700</td></tr><tr><td class="tdNameSubNote">&nbsp;&nbsp;&nbsp;&nbsp;<i>Withheld:</i></td><td style="white-space:nowrap;" class="tdValuePlainSubNote"><i>($200)</i></td></tr><tr><td class="tdNamePlain">Salary 2:</td><td style="white-space:nowrap;" class="tdValuePlain">$1,300</td></tr></table></td></tr><tr><td class="tdHead">Payments To Be Made</td></tr><tr><td><table class="tableSub"><tr><td class="tdNamePlain">Expenses:</td><td style="white-space:nowrap;" class="tdPaymentPositive">$1,725</td></tr><tr><td class="tdNamePlain">Cash:</td><td style="white-space:nowrap;" class="tdPaymentNegative">-$1,732</td></tr><tr><td class="tdNameSubNote">&nbsp;&nbsp;&nbsp;&nbsp;<i>Save for Taxes:</i></td><td style="white-space:nowrap;" class="tdPaymentPositiveSubNote"><i>($268)</i></td></tr><tr><td class="tdNamePlain">Bank Savings:</td><td style="white-space:nowrap;" class="tdPaymentPositive">$335</td></tr><tr><td class="tdNameSubNote">&nbsp;&nbsp;&nbsp;&nbsp;<i>Tuition:</i></td><td style="white-space:nowrap;" class="tdPaymentPositiveSubNote"><i>($335)</i></td></tr><tr><td class="tdNamePlain">Mortgage:</td><td style="white-space:nowrap;" class="tdPaymentPositive">$597</td></tr><tr><td class="tdNamePlain">MasterCard:</td><td style="white-space:nowrap;" class="tdPaymentPositive">$2,075</td></tr></table></td></tr><tr><td class="tdHead">Debts After Payments</td></tr><tr><td><table class="tableSub"><tr><td class="tdNamePlain">Mortgage:</td><td style="white-space:nowrap;" class="tdValuePlain">$124,810</td></tr><tr><td class="tdNameSubNote">&nbsp;&nbsp;&nbsp;&nbsp;<i>Interest:</i></td><td style="white-space:nowrap;" class="tdValuePlainSubNote"><i>($407)</i></td></tr><tr><td class="tdNamePlain">MasterCard:</td><td style="white-space:nowrap;" class="tdValuePlain">$459</td></tr><tr><td class="tdNameSubNote">&nbsp;&nbsp;&nbsp;&nbsp;<i>Interest:</i></td><td style="white-space:nowrap;" class="tdValuePlainSubNote"><i>($34)</i></td></tr></table></td></tr><tr><td class="tdHead">Savings After Payments</td></tr><tr><td><table class="tableSub"><tr><td class="tdNamePlain">Roth IRA:</td><td style="white-space:nowrap;" class="tdValuePlain">$8,000</td></tr><tr><td class="tdNamePlain">Cash:</td><td style="white-space:nowrap;" class="tdValuePlain">$5,268</td></tr><tr><td class="tdNameSubNote">&nbsp;&nbsp;&nbsp;&nbsp;<i>Save for Taxes:</i></td><td style="white-space:nowrap;" class="tdValuePlainSubNote"><i>($268)</i></td></tr><tr><td class="tdNamePlain">Bank Savings:</td><td style="white-space:nowrap;" class="tdValuePlain">$5,335</td></tr><tr><td class="tdNamePlain">NetWorth:</td><td style="white-space:nowrap;" class="tdValueNegative">-$111,934</td></tr></table></td></tr></table>
+            </td><td class="divPayments">
+                <h3>Next Month's Plan</h3>
+                <table><tr><td class="tdHead">Income This Month</td></tr><tr><td><table class="tableSub"><tr><td class="tdNamePlain">Salary 1:</td><td style="white-space:nowrap;" class="tdValuePlain">$1,700</td></tr><tr><td class="tdNameSubNote">&nbsp;&nbsp;&nbsp;&nbsp;<i>Withheld:</i></td><td style="white-space:nowrap;" class="tdValuePlainSubNote"><i>($200)</i></td></tr><tr><td class="tdNamePlain">Salary 2:</td><td style="white-space:nowrap;" class="tdValuePlain">$1,300</td></tr></table></td></tr><tr><td class="tdHead">Payments To Be Made</td></tr><tr><td><table class="tableSub"><tr><td class="tdNamePlain">Expenses:</td><td style="white-space:nowrap;" class="tdPaymentPositive">$1,725</td></tr><tr><td class="tdNamePlain">Cash:</td><td style="white-space:nowrap;" class="tdPaymentPositive">$268</td></tr><tr><td class="tdNameSubNote">&nbsp;&nbsp;&nbsp;&nbsp;<i>Save for Taxes:</i></td><td style="white-space:nowrap;" class="tdPaymentPositiveSubNote"><i>($268)</i></td></tr><tr><td class="tdNamePlain">Bank Savings:</td><td style="white-space:nowrap;" class="tdPaymentPositive">$396</td></tr><tr><td class="tdNameSubNote">&nbsp;&nbsp;&nbsp;&nbsp;<i>Tuition:</i></td><td style="white-space:nowrap;" class="tdPaymentPositiveSubNote"><i>($396)</i></td></tr><tr><td class="tdNamePlain">Mortgage:</td><td style="white-space:nowrap;" class="tdPaymentPositive">$597</td></tr><tr><td class="tdNamePlain">MasterCard:</td><td style="white-space:nowrap;" class="tdPaymentPositive">$14</td></tr></table></td></tr><tr><td class="tdHead">Debts After Payments</td></tr><tr><td><table class="tableSub"><tr><td class="tdNamePlain">Mortgage:</td><td style="white-space:nowrap;" class="tdValuePlain">$124,620</td></tr><tr><td class="tdNameSubNote">&nbsp;&nbsp;&nbsp;&nbsp;<i>Interest:</i></td><td style="white-space:nowrap;" class="tdValuePlainSubNote"><i>($407)</i></td></tr><tr><td class="tdNamePlain">MasterCard:</td><td style="white-space:nowrap;" class="tdValuePlain">$451</td></tr><tr><td class="tdNameSubNote">&nbsp;&nbsp;&nbsp;&nbsp;<i>Interest:</i></td><td style="white-space:nowrap;" class="tdValuePlainSubNote"><i>($6)</i></td></tr></table></td></tr><tr><td class="tdHead">Savings After Payments</td></tr><tr><td><table class="tableSub"><tr><td class="tdNamePlain">Roth IRA:</td><td style="white-space:nowrap;" class="tdValuePlain">$8,000</td></tr><tr><td class="tdNamePlain">Cash:</td><td style="white-space:nowrap;" class="tdValuePlain">$5,536</td></tr><tr><td class="tdNameSubNote">&nbsp;&nbsp;&nbsp;&nbsp;<i>Save for Taxes:</i></td><td style="white-space:nowrap;" class="tdValuePlainSubNote"><i>($536)</i></td></tr><tr><td class="tdNamePlain">Bank Savings:</td><td style="white-space:nowrap;" class="tdValuePlain">$5,731</td></tr><tr><td class="tdNamePlain">NetWorth:</td><td style="white-space:nowrap;" class="tdValueNegative">-$111,340</td></tr></table></td></tr></table>
+          </td></tr>
+        </table>
+      </div>            
+    </div>
+    <br/>
+  </div>
+</main>
+<footer>
+  <div id="divFootBody">
+        <div class="divFootCol divFootColLarge">
+            <img src="Style/Images/text-logo-type-footer-reversed-white.png"/>
+            <p>This site is intended to serve as an informational tool only, and should not be construed as legal, investment or tax advice.</p>
+            <p>Please consult with a financial advisor or an investment professional about your unique circumstances.</p>
+            <p>© 2014 Optimize Now Technologies</p>
+            <p>~Disclaimer</p>
+        </div>
+        <div class="divFootCol divFootColSmall">
+            <h5>Contact Us</h5>
+            <a href="http://giniplan.com/mailto:info@giniplan.com">info@giniplan.com</a>
+
+            <h5>Connect</h5>
+            <img src="Style/Images/sprite-social-icons-footer.png"/>
+
+            <h5>Sitemap</h5>
+            <a href="http://giniplan.com/">Español</a><br/>
+            <a href="http://giniplan.com/">Home</a><br/>
+            <a href="http://giniplan.com/">Sign Up</a><br/>
+            <a href="http://giniplan.com/">Login</a>
+        </div>
+        <div class="divFootCol divFootColLarge">
+            <h5>Careers (Boulder, CO)</h5>
+            <p>Senior .NET Developer<br/><a href="http://giniplan.com/">details ></a></p>
+            <div class="footbar"></div>
+            <p>Marketing Operations Specialist<br/><a href="http://giniplan.com/">details ></a></p>
+        </div>
+        <div class="divFootCol divFootColSmall">
+            <h5>Secure Login</h5>
+            <a href="http://giniplan.com/Login.aspx"><img src="Style/Images/btn-login-footer.gif"/></a>
+        </div>
+    </div>
+</footer>
+<div id="popupMessage_divBack" style="opacity:0.55;text-align:center;position:fixed;filter:alpha(opacity=55);background-color:gray;display:none;">
+</div>
+<div id="ctl00_ctl00_popupMessage" onkeypress="javascript:return WebForm_FireDefaultButton(event, &#39;ctl00_ctl00_popupMessage_btnPopupPanelButton0&#39;)" style="position:fixed;text-align:center;display:none;">
+	<div id="ctl00_ctl00_popupMessage_up">
+		<div style="display:none;" id="ctl00_ctl00_popupMessage_javaFields" Name="ctl00$ctl00$popupMessage" PostBack="0" DivBackID="popupMessage_divBack" Modal="1" ModalOpacity="55" RelativeToTrigger="0" RelativeX="Center" RelativeY="Center" Animation="Static" AnimationFade="0" AnimationDuration="0.5" ShowScript="" HideScript="" RelativeZIndex="0"></div><input type="hidden" id="ctl00_ctl00_popupMessage_javaFields_Visible" name="ctl00_ctl00_popupMessage_javaFields_Visible" value="0" /><input type="hidden" id="ctl00_ctl00_popupMessage_javaFields_Data" name="ctl00_ctl00_popupMessage_javaFields_Data" value="" /><div id="ctl00_ctl00_popupMessage_divOuter" style="border-radius:10px;padding:15px 15px 15px 15px;background-color:white;font-size:14px;font-weight:bold;">
+			<div id="ctl00_ctl00_popupMessage_divInner" style="overflow:hidden;">
+				<div id="ctl00_ctl00_popupMessage_divClose" style="Float:right;">
+
+				</div><div id="ctl00_ctl00_popupMessage_divMessage1">
+					<span id="ctl00_ctl00_popupMessage_lblMessage1"></span>
+				</div><div id="ctl00_ctl00_popupMessage_divContent">
+
+				</div><div id="ctl00_ctl00_popupMessage_divMessage2">
+					<span id="ctl00_ctl00_popupMessage_lblMessage2"></span>
+				</div><div id="ctl00_ctl00_popupMessage_divControls" style="text-align:center;">
+					<table style="border-style:none;text-align:center;margin-left:auto;margin-right:auto;margin-top:7px;margin-bottom:5px;">
+						<tr>
+							<td style="border-style:none;text-align:center;padding-left:15px;padding-right:15px;"><a id="ctl00_ctl00_popupMessage_btnPopupPanelButton0" onclick="if ($id(&#39;ctl00_ctl00_popupMessage&#39;).style.display==&#39;none&#39;)return false;PopupPanel.hide(&#39;ctl00_ctl00_popupMessage&#39;,null);" href="http://giniplan.com/javascript:" style="cursor:pointer;">Okay</a></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+        <div id="popupError_divBack" style="opacity:0.55;text-align:center;position:fixed;filter:alpha(opacity=55);background-color:gray;display:none;">
+
+</div><div id="ctl00_ctl00_popupError" onkeypress="javascript:return WebForm_FireDefaultButton(event, &#39;ctl00_ctl00_popupError_btnPopupPanelButton0&#39;)" style="position:fixed;text-align:center;display:none;">
+	<div id="ctl00_ctl00_popupError_up">
+		<div style="display:none;" id="ctl00_ctl00_popupError_javaFields" Name="ctl00$ctl00$popupError" PostBack="0" DivBackID="popupError_divBack" Modal="1" ModalOpacity="55" RelativeToTrigger="0" RelativeX="Center" RelativeY="Center" Animation="Static" AnimationFade="0" AnimationDuration="0.5" ShowScript="" HideScript="" RelativeZIndex="0"></div><input type="hidden" id="ctl00_ctl00_popupError_javaFields_Visible" name="ctl00_ctl00_popupError_javaFields_Visible" value="0" /><input type="hidden" id="ctl00_ctl00_popupError_javaFields_Data" name="ctl00_ctl00_popupError_javaFields_Data" value="" /><div id="ctl00_ctl00_popupError_divOuter" style="border-radius:10px;padding:15px 15px 15px 15px;background-color:white;font-size:14px;font-weight:bold;">
+			<div id="ctl00_ctl00_popupError_divInner" style="overflow:hidden;">
+				<div id="ctl00_ctl00_popupError_divClose" style="Float:right;"></div>
+        <div id="ctl00_ctl00_popupError_divMessage1">
+					<span id="ctl00_ctl00_popupError_lblMessage1">Error</span>
+				</div>
+        <div id="ctl00_ctl00_popupError_divContent"></div>
+        <div id="ctl00_ctl00_popupError_divMessage2">
+					<span id="ctl00_ctl00_popupError_lblMessage2"></span>
+				</div>
+        <div id="ctl00_ctl00_popupError_divControls" style="text-align:center;">
+					<table style="border-style:none;text-align:center;margin-left:auto;margin-right:auto;margin-top:7px;margin-bottom:5px;">
+						<tr>
+							<td style="border-style:none;text-align:center;padding-left:15px;padding-right:15px;"><a id="ctl00_ctl00_popupError_btnPopupPanelButton0" onclick="if ($id(&#39;ctl00_ctl00_popupError&#39;).style.display==&#39;none&#39;)return false;PopupPanel.hide(&#39;ctl00_ctl00_popupError&#39;,null);" href="http://giniplan.com/javascript:" style="cursor:pointer;">Okay</a></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+        <div id="popupLoading_divBack" style="opacity:0.55;text-align:center;position:fixed;filter:alpha(opacity=55);background-color:gray;display:none;">
+        </div>
+        <div id="ctl00_ctl00_popupLoading" style="position:fixed;text-align:center;display:none;">
+	      <div id="ctl00_ctl00_popupLoading_up">
+		    <div style="display:none;" id="ctl00_ctl00_popupLoading_javaFields" Name="ctl00$ctl00$popupLoading" PostBack="0" DivBackID="popupLoading_divBack" Modal="1" ModalOpacity="55" RelativeToTrigger="0" RelativeX="Center" RelativeY="Center" Animation="Static" AnimationFade="0" AnimationDuration="0.5" ShowScript="" HideScript="" RelativeZIndex="0"></div><input type="hidden" id="ctl00_ctl00_popupLoading_javaFields_Visible" name="ctl00_ctl00_popupLoading_javaFields_Visible" value="0" /><input type="hidden" id="ctl00_ctl00_popupLoading_javaFields_Data" name="ctl00_ctl00_popupLoading_javaFields_Data" value="" /><div id="ctl00_ctl00_popupLoading_divOuter" style="border-radius:10px;padding:15px 15px 15px 15px;background-color:white;font-size:14px;font-weight:bold;">
+			   <div id="ctl00_ctl00_popupLoading_divInner" style="overflow:hidden;">
+				    <div id="ctl00_ctl00_popupLoading_divClose" style="Float:right;">
+				    </div>
+            <div id="ctl00_ctl00_popupLoading_divMessage1">
+					   <span id="ctl00_ctl00_popupLoading_lblMessage1">Loading</span>
+				    </div>
+            <div id="ctl00_ctl00_popupLoading_divContent">
+            <br/>
+            <img id="ctl00_ctl00_popupLoading_imgLoading" src="Style/Images/loaderb32.gif" /></div>
+          <div id="ctl00_ctl00_popupLoading_divMessage2">
+					<span id="ctl00_ctl00_popupLoading_lblMessage2"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+    if(!(typeof(Sys)==="undefined") && !(typeof(Sys.Application)==="undefined")){Sys.Application.add_init(function(){var prm = Sys.WebForms.PageRequestManager.getInstance();
+        prm.add_beginRequest(function(){var prm = Sys.WebForms.PageRequestManager.getInstance(); if ( true & prm._postBackSettings.sourceElement.id.toLowerCase().match("timer") == null){PopupPanel.show('ctl00_ctl00_popupLoading', 'NULL', 'NULL', 'NULL', false, null);}});
+        prm.add_endRequest(function(){PopupPanel.hide('ctl00_ctl00_popupLoading', null);});
+    });}
+</script>
+<script type="text/javascript">
+    Zerra.events.add(window,"resize",function(){PopupPanel.mover('ctl00_ctl00_popupMessage');});
+    Zerra.events.add(window,"scroll",function(){PopupPanel.mover('ctl00_ctl00_popupMessage');});
+PopupPanel.clear();PopupPanel.mover('ctl00_ctl00_popupMessage');if(!(typeof(Sys)==="undefined") && !(typeof(Sys.Application)==="undefined")){Sys.Application.add_init(function(){var prm=Sys.WebForms.PageRequestManager.getInstance();prm.add_pageLoaded(function(){if(prm.get_isInAsyncPostBack()){PopupPanel.clear();PopupPanel.mover('ctl00_ctl00_popupMessage');}});});}
+</script>
+<script type="text/javascript">
+    Zerra.events.add(window,"resize",function(){PopupPanel.mover('ctl00_ctl00_popupError');});
+    Zerra.events.add(window,"scroll",function(){PopupPanel.mover('ctl00_ctl00_popupError');});
+PopupPanel.clear();PopupPanel.mover('ctl00_ctl00_popupError');if(!(typeof(Sys)==="undefined") && !(typeof(Sys.Application)==="undefined")){Sys.Application.add_init(function(){var prm=Sys.WebForms.PageRequestManager.getInstance();prm.add_pageLoaded(function(){if(prm.get_isInAsyncPostBack()){PopupPanel.clear();PopupPanel.mover('ctl00_ctl00_popupError');}});});}
+</script>
+<script type="text/javascript">
+  function SysErrorHandlerctl00_ctl00_popupError(sender, args){
+    var er=args.get_error()
+      if (er!=undefined) {
+        var m=er.description.substring(er.description.indexOf(': ')+1);
+        PopupPanel.show('ctl00_ctl00_popupError','NULL','NULL',m,false,null);
+        args.set_errorHandled(true);
+    }
+  }
+  if(!(typeof(Sys)==="undefined") && !(typeof(Sys.Application)==="undefined")){Sys.Application.add_init(function(){var prm=Sys.WebForms.PageRequestManager.getInstance();
+      prm.add_endRequest(SysErrorHandlerctl00_ctl00_popupError);
+  });}
+</script>
+<script type="text/javascript">
+    Zerra.events.add(window,"resize",function(){PopupPanel.mover('ctl00_ctl00_popupLoading');});
+    Zerra.events.add(window,"scroll",function(){PopupPanel.mover('ctl00_ctl00_popupLoading');});
+PopupPanel.clear();PopupPanel.mover('ctl00_ctl00_popupLoading');if(!(typeof(Sys)==="undefined") && !(typeof(Sys.Application)==="undefined")){Sys.Application.add_init(function(){var prm=Sys.WebForms.PageRequestManager.getInstance();prm.add_pageLoaded(function(){if(prm.get_isInAsyncPostBack()){PopupPanel.clear();PopupPanel.mover('ctl00_ctl00_popupLoading');}});});}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/material.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/ripples.min.js"></script>
+</form>
+</body>
+</html>

@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gini Plan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Mobile support -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"><!-- Twitter Bootstrap -->
+    <link href="dist/css/roboto.min.css" rel="stylesheet"><!-- Material Design for Bootstrap -->
+    <link href="dist/css/material-fullpalette.min.css" rel="stylesheet">
+    <link href="dist/css/ripples.min.css" rel="stylesheet">
+    <link href="//cdn.rawgit.com/FezVrasta/dropdown.js/master/jquery.dropdown.css" rel="stylesheet"><!-- Dropdown.js -->
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      .header-panel {
+        background-color: #009587;
+        height: 144px;
+        position: relative;
+        z-index: 3;
+      }
+      .header-panel div {
+        position: relative;
+        /*height: 100%;*/
+      }
+      .header-panel h1 {
+        color: #FFF;
+        font-size: 20px;
+        font-weight: 400;
+        position: absolute;
+        bottom: 10px;
+        padding-left: 35px;
+      }
+      .menu {
+        overflow: auto;
+        padding: 0;
+      }
+      .menu, .menu * {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+      .menu ul {
+        padding: 0;
+        margin: 7px 0;
+      }
+      .menu ul li {
+        list-style: none;
+        padding: 20px 0 20px 50px;
+        font-size: 15px;
+        font-weight: normal;
+        cursor: pointer;
+      }
+      .menu ul li.active {
+        background-color: #dedede;
+        position: relative;
+      }
+      .menu ul li a {
+        color: rgb(51, 51, 51);
+        text-decoration: none;
+      }
+      .pages {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 4;
+        padding: 0;
+        overflow: auto;
+      }
+      .pages > div {
+        padding: 0 5px;
+        padding-top: 64px;
+      }
+      .pages .header {
+        color: rgb(82, 101, 162);
+        font-size: 24px;
+        font-weight: normal;
+        margin-top: 5px;
+        margin-bottom: 60px;
+        letter-spacing: 1.20000004768372px;
+      }
+      .page {
+        transform: translateY(1080px);
+        transition: transform 0 linear;
+        display: none;
+        opacity: 0;
+        font-size: 16px;
+      }
+      .page.active {
+        transform: translateY(0px);
+        transition: all 0.3s ease-out;
+        display: block;
+        opacity: 1;
+      }
+    body {
+      height: 100%;
+      margin: 0;
+      background: linear-gradient(135deg, rgba(65,131,155,1) 0%,rgba(51,98,123,1) 100%);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+    #container {
+      display: table;
+      width: 1200px;
+      background: #202b33;
+      margin: 60px auto;
+      border-radius: 4px;
+    }
+    /* Content */
+    #content {
+      width: calc(100% - 240px);
+      height: 100%;
+      padding: 25px;
+      display: table-cell;
+    }
+    #titleBar {
+      height: 36px;
+      margin-bottom: 30px;
+    }
+    #profilePic {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #999;
+      float: right;
+      margin-top: -8px;
+      margin-left: 14px;
+      overflow: hidden;
+    }
+    #profilePic img {
+      width: 100%;
+    }
+    .controls {
+      display: block;
+      width: 70px;
+      height: 20px;
+      font-size: 10px;
+      font-weight: 300;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 20px;
+      float: right;
+      border-radius: 20px;
+    }
+    .activeControl {
+      background: rgba(255, 255, 255, 0.9);
+      color: #202b33;
+      font-weight: 600;
+    }
+    #salesData {
+      margin-bottom: 60px;
+    }
+    #totalSales {
+      height: 120px;
+      position: relative;
+      margin-top: 24px;
+      margin-bottom: 50px;
+    }
+    #totalSales .col {
+      float: left;
+      width: 33.33%;
+      height: 100%;
+    }
+    #totalSales .col .progressTitle {
+      float: left;
+      margin-left: 20px;
+      font-weight: 300;
+    }
+    .progressBar {
+      float: left;
+      height: 120px;
+      width: 120px;
+      font-size: 40px;
+      text-align: center;
+      line-height: 120px;
+    }
+
+    /* Icons */
+    .notification {
+      display: block;
+      width: 20px;
+      height: 20px;
+      color: #202b33;
+      font-weight: 600;
+      line-height: 20px;
+      text-align: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .6);
+      position: absolute;
+      top: 0; bottom: 0; right: 2%;
+      margin: auto;
+    }
+    .colorIcon {
+      display: block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      position: absolute;
+      top: 0; bottom: 0; right: 2%;
+      margin: auto;
+    }
+    .plus {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      /*color: #202b33;*/
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 8px;
+      padding: 4px;
+      margin-right: 6px;
+      border: 2px solid rgba(255, 255, 255, .2);
+      border-radius: 50%;
+      /*color: rgba(255, 255, 255, .2);*/
+    }
+    .red {
+      background: #ec1561;
+    }
+    .orange {
+      background: #ff9939;
+    }
+    .green {
+      background: #2bab51;
+    }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th {
+      text-align: left;
+      /*color: #fff;*/
+      font-weight: 400;
+      font-size: 13px;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0 10px;
+      padding-bottom: 14px;
+    }
+    tr:not(:first-child):hover {
+      background: rgba(255, 255, 255, 0.1);
+      background: #f0f0f0;
+    }
+    td {
+      height: 40px;
+      line-height: 40px;
+      font-weight: 300;
+      /*color: rgba(255, 255, 255, 0.4);*/
+      padding: 0 10px;
+    }
+    /* Headers */
+    h1 {
+      font-size: 13px;
+      font-weight: 200;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin: 0;
+    }
+    h2 {
+      float: left;
+      font-size: 19px;
+      font-weight: 200;
+      letter-spacing: 1px;
+      margin: 0;
+      /*color: rgba(255, 255, 255, .8);*/
+    }
+    h3 {
+      float: left;
+      /*color: #fff;*/
+      font-size: 32px;
+      font-weight: 300;
+      margin: 0;
+      margin-top: 8%;
+      margin-left: 20px;
+      margin-bottom: 6px;
+    }
+    .clearFix {
+      clear: both;
+    }
+    .surplus{
+      color: green;
+    }
+    .deficit{
+      color:red;
+    }
+    </style><!-- Page style -->
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script><!-- jQuery -->
+  </head>
+  <body>
+    <div class="header-panel shadow-z-2">
+      <div class="container-fluid">
+        <div class="navbar navbar-default">
+          <div class="row">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="javascript:void(0)">GINI PLAN</a>
+            </div>
+            <div class="navbar-collapse collapse navbar-responsive-collapse">
+              <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="http://giniplan.com/Default.aspx">Overview</a></li>
+                <li><a href="http://giniplan.com/PlanResult.aspx">Financial Plan</a></li>
+                <li><a href="http://giniplan.com/AccountEdit.aspx">My Info</a></li>
+                <li><a href="http://giniplan.com/GetHelp.aspx">Get Help</a></li>
+                <li><a href="http://giniplan.com/Logout.aspx">Logout</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid main">
+      <div class="row">
+        <nav class="col-xs-3 menu">
+          <ul></ul>
+        </nav>
+        <div class="pages col-xs-9">
+          <div class="col-xs-10">
+              <div class="well page active" id="overview" style="display:block;">
+                <h1 class="header">Overview - October 2015</h1>
+                  <div class="mainChart">
+                    <canvas id="salesData"></canvas>
+                    <h2 class="header">Goals</h2>
+                    <div class="clearFix"></div>
+                    <div id="totalSales">
+                      <div class="col">
+                        <div id="creditSales" class="progressBar"></div>
+                        <h3>$36,059</h3>
+                        <span class="progressTitle">Tuition</span>
+                      </div>
+                      <div class="col">
+                        <div id="channelSales" class="progressBar"></div>
+                        <h3>$24,834</h3>
+                        <span class="progressTitle">Mortgage</span>
+                      </div>
+                      <div class="col">
+                        <div id="directSales" class="progressBar"></div>
+                        <h3>$15,650</h3>
+                        <span class="progressTitle">Credit Card</span>
+                      </div>
+                    </div>
+                    <h2 class="header">Balance</h2>
+                    <table>
+                      <tr>
+                        <th>Account</th>
+                        <th>Balance</th>
+                      </tr>
+                      <tr>
+                        <td>Bank Checking (Cash)</td>
+                        <td class="surplus">$1,342</td>
+                      </tr>
+                      <tr>
+                        <td>Bank Savings</td>
+                        <td class="surplus">$1,550</td>
+                      </tr>
+                      <tr>
+                        <td>Roth IRA</td>
+                        <td class="surplus">$4,170</td>
+                      </tr>
+                      <tr>
+                        <td>Mortgage</td>
+                        <td class="deficit">-$125,000</td>
+                      </tr>
+                      <tr>
+                        <td>Visa</td>
+                        <td class="deficit">-$2,974</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  
+    <script>
+      window.page = window.location.hash || "#about";
+
+      $(document).ready(function() {
+        if (window.page != "#about") {
+          $(".menu").find("li[data-target=" + window.page + "]").trigger("click");
+        }
+      });
+
+      $(window).on("resize", function() {
+        $("html, body").height($(window).height());
+        $(".main, .menu").height($(window).height() - $(".header-panel").outerHeight());
+        $(".pages").height($(window).height());
+      }).trigger("resize");
+
+      $(".menu li").click(function() {
+        // Menu
+        if (!$(this).data("target")) return;
+        if ($(this).is(".active")) return;
+        $(".menu li").not($(this)).removeClass("active");
+        $(".page").not(page).removeClass("active").hide();
+        window.page = $(this).data("target");
+        var page = $(window.page);
+        window.location.hash = window.page;
+        $(this).addClass("active");
+
+
+        page.show();
+
+        var totop = setInterval(function() {
+          $(".pages").animate({scrollTop:0}, 0);
+        }, 1);
+
+        setTimeout(function() {
+          page.addClass("active");
+          setTimeout(function() {
+            clearInterval(totop);
+          }, 1000);
+        }, 100);
+      });
+
+      function cleanSource(html) {
+        var lines = html.split(/\n/);
+
+        lines.shift();
+        lines.splice(-1, 1);
+
+        var indentSize = lines[0].length - lines[0].trim().length,
+            re = new RegExp(" {" + indentSize + "}");
+
+        lines = lines.map(function(line){
+          if (line.match(re)) {
+            line = line.substring(indentSize);
+          }
+
+          return line;
+        });
+
+        lines = lines.join("\n");
+
+        return lines;
+      }
+
+      $("#opensource").click(function() {
+        $.get(window.location.href, function(data){
+          var html = $(data).find(window.page).html();
+          html = cleanSource(html);
+          $("#source-modal pre").text(html);
+          $("#source-modal").modal();
+        });
+      });
+    </script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script><!-- Twitter Bootstrap -->
+    <script src="dist/js/material.min.js"></script> <!-- Material Design for Bootstrap -->
+    <script src="dist/js/ripples.min.js"></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.1/Chart.min.js'></script>
+    <script src='http://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/0.7.4/dist/progressbar.js'></script>
+    <script>
+      $.material.init();
+      // https://dribbble.com/shots/1821178-Sales-Report?list=buckets&offset=0
+      // Line Chart
+      var salesData = {
+        labels: ["April", "May", "June", "July", "August", "September", "October"],
+        datasets: [{
+          label: "Front",
+          fillColor: "rgba(195, 40, 96, 0.1)",
+          strokeColor: "rgba(195, 40, 96, 1)",
+          pointColor: "rgba(195, 40, 96, 1)",
+          pointStrokeColor: "#202b33",
+          pointHighlightStroke: "rgba(225,225,225,0.9)",
+          data: [3400, 3000, 2500, 4500, 2500, 3400, 3000]
+        },{
+          label: "Middle",
+          fillColor: "rgba(255, 172, 100, 0.1)",
+          strokeColor: "rgba(255, 172, 100, 1)",
+          pointColor: "rgba(255, 172, 100, 1)",
+          pointStrokeColor: "#202b33",
+          pointHighlightStroke: "rgba(225,225,225,0.9)",
+          data: [1900, 1700, 2100, 3600, 2200, 2500, 2000]
+        },{
+          label: "Back",
+          fillColor: "rgba(19, 71, 34, 0.3)",
+          strokeColor: "rgba(88, 188, 116, 1)",
+          pointColor: "rgba(88, 188, 116, 1)",
+          pointStrokeColor: "#202b33",
+          pointHighlightStroke: "rgba(225,225,225,0.9)",
+          data: [1000, 1400, 1100, 2600, 2000, 900, 1400]
+        }]
+      };
+
+      var ctx = document.getElementById("salesData").getContext("2d");
+      window.myLineChart = new Chart(ctx).Line(salesData, {
+        pointDotRadius : 6,
+        pointDotStrokeWidth : 2,
+        datasetStrokeWidth : 3,
+        scaleShowVerticalLines: false,
+        scaleGridLineWidth : 2,
+        scaleShowGridLines : true,
+        scaleGridLineColor : "rgba(225, 255, 255, 0.02)",
+        scaleOverride: true,
+        scaleSteps: 9,
+        scaleStepWidth: 500,
+        scaleStartValue: 0,
+        responsive: true
+      });
+
+      //Credit Sales
+      var creditSales = new ProgressBar.Circle('#creditSales', {
+        color: '#e81760',
+        strokeWidth: 3,
+        trailWidth: 3,
+        duration: 1500,
+        text: {
+          value: '0%'
+        },
+        step: function(state, bar) {
+          bar.setText((bar.value() * 100).toFixed(0) + "%");
+        }
+      });
+      
+      var channelSales = new ProgressBar.Circle('#channelSales', {
+        color: '#e88e3c',
+        strokeWidth: 3,
+        trailWidth: 3,
+        duration: 1500,
+        text: {
+          value: '0%'
+        },
+        step: function(state, bar) {
+          bar.setText((bar.value() * 100).toFixed(0) + "%");
+        }
+      });
+      var directSales = new ProgressBar.Circle('#directSales', {
+        color: '#2bab51',
+        strokeWidth: 3,
+        trailWidth: 3,
+        duration: 1500,
+        text: {
+          value: '0%'
+        },
+        step: function(state, bar) {
+          bar.setText((bar.value() * 100).toFixed(0) + "%");
+        }
+      });
+      creditSales.animate(0.8);
+      channelSales.animate(0.64);
+      directSales.animate(0.34);
+    </script>
+  </body>
+</html>
